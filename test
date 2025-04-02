@@ -1,52 +1,85 @@
- const playlist = [
-                {
-                    title: "Astro Ria (A)",
-                    url: "https://tinyurl.com/playria0",
-                    logo: "https://aqfadtv.xyz/logos/Astro Ria (2024).png",
-                    channelNumber: "104",
-                    groupLogo: "https://i.ibb.co/mrNKFM6V/Untitled-design.png"
-                }
-            ];
+#EXTM3U
+#EXTINF:-1,Malaysia Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Malaysia Channel 2
+http://example.com/malaysia2
 
-            // Function to render the playlist
-            function renderPlaylist() {
-                playlistItems.innerHTML = '';
-                playlist.forEach((video, index) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <img src="${video.logo}" class="channel-logo" alt="${video.title} logo">
-                        <span>${video.title} (Channel ${video.channelNumber})</span>
-                        <button onclick="playVideo(${index})">Play</button>
-                    `;
-                    playlistItems.appendChild(li);
-                });
-            }
+#EXTINF:-1,India Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,India Channel 2
+http://example.com/india2
 
-            // Function to add video to the playlist
-            addButton.addEventListener("click", function() {
-                const title = videoTitleInput.value;
-                const url = videoUrlInput.value;
+#EXTINF:-1,Chinese Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Chinese Channel 2
+http://example.com/chinese2
 
-                if (title && url) {
-                    playlist.push({ title: title, url: url, logo: '', channelNumber: '', groupLogo: '' });
-                    renderPlaylist();
+#EXTINF:-1,Movie Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Movie Channel 2
+http://example.com/movie2
 
-                    // Clear input fields
-                    videoTitleInput.value = '';
-                    videoUrlInput.value = '';
-                }
-            });
+#EXTINF:-1,Sports Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Sports Channel 2
+http://example.com/sports2
 
-            // Function to play selected video from the playlist
-            window.playVideo = function(index) {
-                const video = playlist[index];
-                videoSource.src = video.url;
-                videoPlayer.load();
-                videoPlayer.play();
-            };
+#EXTINF:-1,Singapore Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Singapore Channel 2
+http://example.com/singapore2
 
-            renderPlaylist(); // Initialize the playlist rendering
-        });
-    </script>
-</body>
-</html>
+#EXTINF:-1,Indonesia Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Indonesia Channel 2
+http://example.com/indonesia2
+
+#EXTINF:-1,3 Beradik Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,3 Beradik Channel 2
+http://example.com/3beradik2
+
+#EXTINF:-1,Korea Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Korea Channel 2
+http://example.com/korea2
+
+#EXTINF:-1,Entertainment Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Entertainment Channel 2
+http://example.com/entertainment2
+
+#EXTINF:-1,Fast Channels Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Fast Channels Channel 2
+http://example.com/fast2
+
+#EXTINF:-1,Kids Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Kids Channel 2
+http://example.com/kids2
+
+#EXTINF:-1,Pluto Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Pluto Channel 2
+http://example.com/pluto2
+
+#EXTINF:-1,News Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,News Channel 2
+http://example.com/news2
+
+#EXTINF:-1,Radio Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Radio Channel 2
+http://example.com/radio2
+
+#EXTINF:-1,Brunei Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Brunei Channel 2
+http://example.com/brunei2
+
+#EXTINF:-1,Documentary Channel 1
+https://l04.dp.sooka.my/2400/linear/index.mpd
+#EXTINF:-1,Documentary Channel 2
+http://example.com/documentary2
