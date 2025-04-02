@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist OTT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        #video-player {
+            margin: 20px auto;
+        }
+
+        #playlist {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Playlist OTT</h1>
+    </header>
+
+    <main>
+        <div id="video-player">
+            <video id="video" controls width="800">
+                <source id="video-source" src="" type="application/dash+xml">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div id="playlist">
+            <h2>Playlist</h2>
+            <ul id="playlist-items">
+                <!-- Playlist items will be dynamically inserted here -->
+            </ul>
+        </div>
+
+        <div>
+            <h3>Add Video to Playlist</h3>
+            <input type="text" id="video-title" placeholder="Video Title">
+            <input type="text" id="video-url" placeholder="Video URL">
+            <button id="add-video">Add Video</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoPlayer = document.getElementById("video");
+            const videoSource = document.getElementById("video-source");
+            const playlistItems = document.getElementById("playlist-items");
+            const addButton = document.getElementById("add-video");
+            const videoTitleInput = document.getElementById("video-title");
+            const videoUrlInput = document.getElementById("video-url");
+
+            // Sample playlist from given format
+            const playlist = [
+                {
+                    title: "Astro Ria (A)",
+                    url: "https://tinyurl.com/playria0",
+                    logo: "https://aqfadtv.xyz/logos/Astro Ria (2024).png"
+                }
+            ];
+
+            // Function to render the playlist
+            function renderPlaylist() {
+                playlistItems.innerHTML = '';
+                playlist.forEach((video, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${video.title} <button onclick="playVideo(${index})">Play</button>`;
+                    playlistItems.appendChild(li);
+                });
+            }
+
+            // Function to add video to the playlist
+            addButton.addEventListener("click", function() {
+                const title = videoTitleInput.value;
+                const url = videoUrlInput.value;
+
+                if (title && url) {
+                    playlist.push({ title: title, url: url });
+                    renderPlaylist();
+
+                    // Clear input fields
+                    videoTitleInput.value = '';
+                    videoUrlInput.value = '';
+                }
+            });
+
+            // Function to play selected video from the playlist
+            window.playVideo = function(index) {
+                const video = playlist[index];
+                videoSource.src = video.url;
+                videoPlayer.load();
+                videoPlayer.play();
+            };
+
+            renderPlaylist(); // Initialize the playlist rendering
+        });
+    </script>
+</body>
+</html>
