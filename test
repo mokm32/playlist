@@ -32,6 +32,15 @@
 
         li {
             margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .channel-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
         }
 
         button {
@@ -66,7 +75,7 @@
                 <!-- Playlist items will be dynamically inserted here -->
             </ul>
         </div>
-
+        
         <div>
             <h3>Add Video to Playlist</h3>
             <input type="text" id="video-title" placeholder="Video Title">
@@ -84,12 +93,14 @@
             const videoTitleInput = document.getElementById("video-title");
             const videoUrlInput = document.getElementById("video-url");
 
-            // Sample playlist from given format
+            // Sample playlist from provided m3u information
             const playlist = [
                 {
                     title: "Astro Ria (A)",
                     url: "https://tinyurl.com/playria0",
-                    logo: "https://aqfadtv.xyz/logos/Astro Ria (2024).png"
+                    logo: "https://aqfadtv.xyz/logos/Astro Ria (2024).png",
+                    channelNumber: "104",
+                    groupLogo: "https://i.ibb.co/mrNKFM6V/Untitled-design.png"
                 }
             ];
 
@@ -98,7 +109,11 @@
                 playlistItems.innerHTML = '';
                 playlist.forEach((video, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `${video.title} <button onclick="playVideo(${index})">Play</button>`;
+                    li.innerHTML = `
+                        <img src="${video.logo}" class="channel-logo" alt="${video.title} logo">
+                        <span>${video.title} (Channel ${video.channelNumber})</span>
+                        <button onclick="playVideo(${index})">Play</button>
+                    `;
                     playlistItems.appendChild(li);
                 });
             }
@@ -109,7 +124,7 @@
                 const url = videoUrlInput.value;
 
                 if (title && url) {
-                    playlist.push({ title: title, url: url });
+                    playlist.push({ title: title, url: url, logo: '', channelNumber: '', groupLogo: '' });
                     renderPlaylist();
 
                     // Clear input fields
